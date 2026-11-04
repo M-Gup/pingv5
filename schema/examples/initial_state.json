@@ -1,0 +1,67 @@
+{
+  "type": "initial_state",
+  "round": 1,
+  "briefing": "A blizzard has trapped the party in a mountain tavern. Something heavy is walking toward the door.",
+  "current_event": {
+    "text": "The tavern doors splinter inward. A hulking figure ducks under the beam, its breath steaming in the cold air.",
+    "boss": {
+      "name": "Grethak",
+      "description": "A giant with frost-blue skin, one eye sealed shut by an old scar, dragging a chain behind it."
+    }
+  },
+  "your_class": "medusa",
+  "your_stats": {
+    "hp": 30,
+    "wisdom": 4,
+    "strength": 6,
+    "dexterity": 5,
+    "charisma": 3
+  },
+  "objective": "Survive every boss. When you meet your nemesis, perform your required action.",
+  "nemesis": {
+    "description": "A one-eyed creature of ice that drags the chain it was once bound with.",
+    "required_action": "Break the chain."
+  },
+  "other_players": [
+    {
+      "class": "aristotle",
+      "stats": {
+        "hp": 22,
+        "wisdom": 9,
+        "strength": 2,
+        "dexterity": 3,
+        "charisma": 5
+      }
+    },
+    {
+      "class": "francesca",
+      "stats": {
+        "hp": 24,
+        "wisdom": 5,
+        "strength": 3,
+        "dexterity": 6,
+        "charisma": 7
+      }
+    },
+    {
+      "class": "helen_of_troy",
+      "stats": {
+        "hp": 20,
+        "wisdom": 4,
+        "strength": 2,
+        "dexterity": 5,
+        "charisma": 10
+      }
+    },
+    {
+      "class": "cerberus_jr",
+      "stats": {
+        "hp": 34,
+        "wisdom": 2,
+        "strength": 8,
+        "dexterity": 4,
+        "charisma": 2
+      }
+    }
+  ]
+}

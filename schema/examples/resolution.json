@@ -1,0 +1,36 @@
+{
+  "type": "resolution",
+  "round": 1,
+  "narrative": "Aristotle's counsel steadies Medusa's arm, and Medusa shatters the giant's chain. The giant staggers but swings back, catching Helen of Troy across the chest before lumbering into the night.",
+  "boss_defeated": false,
+  "player_outcomes": [
+    { "class": "medusa", "target": "event", "result": "success" },
+    { "class": "aristotle", "target": "medusa", "result": "success" },
+    { "class": "francesca", "target": "event", "result": "failure" },
+    { "class": "helen_of_troy", "target": "event", "result": "failure" },
+    { "class": "cerberus_jr", "target": "event", "result": "timed_out" }
+  ],
+  "stat_changes": [
+    {
+      "class": "medusa",
+      "stat": "strength",
+      "delta": 1,
+      "cause": "player_interaction"
+    },
+    {
+      "class": "helen_of_troy",
+      "stat": "hp",
+      "delta": -20,
+      "cause": "boss_action"
+    },
+    {
+      "class": "cerberus_jr",
+      "stat": "hp",
+      "delta": -10,
+      "cause": "health_penalty"
+    }
+  ],
+  "vendetta_completed": ["medusa"],
+  "deaths": [],
+  "run_over": false
+}

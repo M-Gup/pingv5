@@ -1,0 +1,12 @@
+{
+  "type": "turn",
+  "round": 2,
+  "current_event": {
+    "text": "Past the tavern, the road narrows into a ravine. Something with many legs is moving along the cliff above you.",
+    "boss": {
+      "name": "The Weaver",
+      "description": "A spider the size of a cart, its back covered in stolen jewellery."
+    }
+  },
+  "your_stats": { "hp": 30, "wisdom": 4, "strength": 8, "dexterity": 5, "charisma": 3 }
+}

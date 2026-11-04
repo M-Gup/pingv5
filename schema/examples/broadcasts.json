@@ -1,0 +1,8 @@
+{
+  "type": "broadcasts",
+  "round": 2,
+  "messages": [
+    { "from": "aristotle", "audience": "all", "text": "I can heal whoever takes the most damage this round." },
+    { "from": "cerberus_jr", "audience": "you", "text": "Distract it and I will go for the legs." }
+  ]
+}
