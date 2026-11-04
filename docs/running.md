@@ -109,5 +109,4 @@ uv run ping-llm verify <player>    # check its image and hardening before the ru
 The harness then runs in its own container on that player's network, with
 `PING_LLM_URL=http://llm:8080` and `PING_GM_URL=wss://<gm-host>/play`, as
 `python -m harness_api.client my_harness.py`. That form reads only the NETID from the file and
-runs the submission nowhere but in its own process. The harness image is not built yet
-(AGENTS.md §18).
+runs the submission nowhere but in its own process. The harness image is not built yet.

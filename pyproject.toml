@@ -1,0 +1,74 @@
+# The repository is the organisers' workspace. Its one distributable package is the
+# participant package `ping-harness` (import name `harness_api`): the base class, the message
+# models, the model client, the time limits and the self-check. Nothing else
+# goes into the wheel, so content/, engine/ and config/ never reach participants.
+#
+#   uv build --wheel          -> dist/ping_harness-<version>-py3-none-any.whl
+
+[project]
+name = "ping-harness"
+version = "0.1.0"
+description = "Ping - Dungeons and Dragons: the participant harness package"
+readme = "harness_api/README.md"
+authors = [
+  { name = "Sabarigirish Manikandan", email = "sabari.girish2057@gmail.com" },
+]
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.14.2"]
+
+[project.scripts]
+# The participants' commands (also `uv run ping-play` / `uv run ping-check` in this repository).
+ping-play = "harness_api.client:main"     # join a game: ping-play my_harness.py (needs the client extra)
+ping-check = "harness_api.check:main"     # self-check: ping-check my_harness.py
+
+[project.optional-dependencies]
+client = [
+    "rich>=13",
+    "websockets>=15.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["harness_api"]
+
+[tool.hatch.build.targets.sdist]
+include = ["harness_api"]
+
+[[tool.mypy.overrides]]
+# No type information published for these organiser-side libraries.
+module = ["celery", "celery.*", "jsonschema", "jsonschema.*"]
+ignore_missing_imports = true
+
+[dependency-groups]
+# Organiser tools: the engine, schema checks, GM infrastructure and tests. Installed by default.
+organiser = [
+  "ping-organiser",                      # the organisers' uv run commands (organiser/)
+  "jsonschema>=4.26.0",
+  "mypy>=2.4.1",
+  "pytest>=9.2.0",
+  "google-auth[requests]>=2.40.0",
+  "httpx>=0.28.0",
+  "celery[redis]>=5.4.0",
+  "websockets>=15.0",
+  "rich>=13",
+  { include-group = "llm-server" },
+]
+# The model server's API (sandbox/api.py). The Docker image installs exactly this group from
+# uv.lock (`uv sync --frozen --only-group llm-server`), so versions and hashes come from the lock.
+llm-server = ["fastapi>=0.158.1", "uvicorn>=0.54.0", "httpx>=0.28.0"]
+# Model benchmarking (benchmark/); needs a C compiler, so it is not installed by default:
+# `uv sync --group dev` adds it.
+dev = ["llama-cpp-python>=0.3.36", "psutil>=7.2.2"]
+
+[tool.uv]
+default-groups = ["organiser"]
+
+[tool.uv.workspace]
+# organiser/ holds the organisers' `uv run` commands. It is never built or published.
+members = ["organiser"]
+
+[tool.uv.sources]
+ping-organiser = { workspace = true }
